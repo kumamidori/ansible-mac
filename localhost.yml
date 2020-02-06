@@ -1,0 +1,229 @@
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  vars:
+    homebrew_taps:
+      - homebrew/cask-drivers
+      - homebrew/cask-versions
+
+    homebrew_packages:
+      - { name: ansible }
+      - { name: ant }
+      - { name: awscli }
+      - { name: composer }
+      - { name: coreutils }
+      - { name: diff-so-fancy }
+      - { name: docker-clean }
+      - { name: exiftool }
+      - { name: figlet }
+      - { name: ffmpeg }
+      - { name: git }
+      - { name: ghq }
+      - { name: gnu-sed }
+      - { name: graphviz }
+      - { name: htop-osx }
+      - { name: httpd }
+      - { name: hub }
+      - { name: imagemagick }
+      - { name: iproute2mac }
+      # for project
+      - { name: openjdk@11 }
+      - { name: jq }
+      - { name: mas }
+      # for project
+      - { name: memcached }
+      - { name: mysql@5.7 }
+      - { name: nkf }
+      - { name: nodebrew }
+      - { name: openssl }
+      - { name: p7zip }
+      - { name: packer }
+      - { name: pandoc }
+      - { name: peco }
+      - { name: python }
+      - { name: python, state: unlink }
+      - { name: python@2 }
+      - { name: reattach-to-user-namespace }
+      - { name: rename }
+      - { name: sendemail }
+      - { name: sqlite }
+      - { name: ssh-copy-id }
+      - { name: the_silver_searcher }
+      - { name: telnet }
+      - { name: tig }
+      - { name: tree }
+      - { name: wget }
+      - { name: zsh }
+      - { name: zsh-completions }
+      # required from phpenv and php-build
+      # see also https://qiita.com/0tofu/items/e95867ebc9dadf58cc70
+      - { name: bison }
+      - { name: bzip2 }
+      - { name: zlib }
+      - { name: libiconv }
+      - { name: libedit }
+      - { name: libxml2 }
+      - { name: re2c }
+      # to pecl install amqp
+      # see also https://stackoverflow.com/questions/51818515/installing-amqp-on-mac-with-brew#answer-52832365
+      - { name: rabbitmq-c }
+
+    homebrew_cask_packages:
+      - alfred
+      - appcleaner
+      - avast-security
+      - caffeine
+      - camunda-modeler
+      - charles
+      - coteditor
+      - docker
+      - dropbox
+      - eclipse-java
+      - firefox
+      - flash-player
+      - google-chrome
+      - google-japanese-ime
+      - intellij-idea-ce
+      - iterm2
+      - kindle
+      - phpstorm
+      - sequel-pro
+      - slack
+      - skitch
+      - visual-studio-code
+      - typora
+
+    mas_packages:
+      - { name: Keynote, id: 409183694 }
+      - { name: "Be Focused - Focus Timer", id: 973134470 }
+
+    composer_packages:
+      - { name: "hirak/prestissimo" }
+
+    npm_packages:
+      - { name: grunt }
+      - { name: grunt-cli }
+      - { name: gulp }
+      - { name: karma }
+      - { name: less }
+      - { name: npm-check-updates }
+      - { name: typescript }
+      - { name: typings }
+      - { name: yarn }
+
+    apple_defaults:
+      # Finder: Show dotfiles
+      - domain: finder
+        key: AppleShowAllFiles
+        type: bool
+        value: true
+
+  handlers:
+    - name: run fc-cache
+      shell: fc-cache -vf
+
+  tasks:
+    # brew tap
+    - name: install taps of homebrew
+      homebrew_tap: tap="{{ item }}" state=present
+      with_items: "{{ homebrew_taps }}"
+      tags:
+        - brew
+
+    # brew update
+    - name: update homebrew
+      homebrew: update_homebrew=yes
+      tags:
+        - brew
+
+    # brew cask install
+    - name: install homebrew cask packages
+      homebrew_cask: name="{{ item }}" state=present
+      with_items: "{{ homebrew_cask_packages }}"
+      ignore_errors: true
+      tags:
+        - cask
+
+    # brew install
+    - name: install homebrew packages
+      homebrew: name="{{ item.name }}" state="{{ item.state|default('latest') }}" install_options="{{ item.install_options|default() }}"
+      with_items: "{{ homebrew_packages }}"
+      tags:
+        - brew
+
+    # mas install
+    - name: install mas (App Store) packages
+      shell: mas install "{{ item.id }}"
+      with_items: "{{ mas_packages }}"
+      register: ret
+      changed_when: '"already installed" not in ret.stdout'
+      tags:
+        - mas
+
+    # mas upgrade
+    - name: upgrade all mas (App Store) packages
+      shell: mas upgrade
+      register: ret
+      changed_when: '"Everything is up-to-date" not in ret.stdout'
+      tags:
+        - mas
+
+    # composer global install
+    - name: install composer packages
+      composer: command=require global_command=yes arguments="{{ item.name }}"
+      with_items: "{{ composer_packages }}"
+      tags:
+        - composer
+
+    # npm -g install
+    - name: install npm packages
+      npm: name="{{ item.name }}" state="{{ item.state|default('latest') }}" version="{{ item.version|default() }}" global=yes
+      with_items: "{{ npm_packages }}"
+      tags:
+        - npm
+
+    # gem install bundler
+    - name: install bundler
+      gem: name="bundler" state="latest"
+      tags:
+        - gem
+
+    # install oh-my-zsh
+    - name: install oh-my-zsh
+      shell: sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+      args:
+        creates: ~/.oh-my-zsh
+      tags:
+        - zsh
+    - name: install zsh-completions
+      file: src=/usr/local/share/zsh-completions dest=~/.oh-my-zsh/custom/plugins/zsh-completions state=link
+      tags:
+        - zsh
+
+    # install for project old Selenium
+    #- name: install Selenium Server
+    #  get_url: url="https://repo1.maven.org/maven2/org/seleniumhq/selenium/selenium-server/3.6.0/selenium-server-3.6.0.jar" dest=/tmp
+    #  tags:
+    #    - selenium
+
+    # configure mysql
+    - name: chown mysql directory
+      file: path=/usr/local/var/mysql owner=_mysql group=_mysql recurse=yes
+      become: yes
+      become_method: sudo
+      tags:
+        - mysql
+
+    # Mac
+    - name: set com.apple defaults
+      osx_defaults:
+        host: "{{ item.host | default() }}"
+        domain: "com.apple.{{ item.domain }}"
+        key: "{{ item.key }}"
+        type: "{{ item.type }}"
+        value: "{{ item.value | default() }}"
+      register: defaults_out
+      with_items:
+        - "{{ apple_defaults }}"
+      tags:
+        - setting
