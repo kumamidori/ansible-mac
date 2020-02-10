@@ -14,6 +14,7 @@
       - { name: coreutils }
       - { name: diff-so-fancy }
       - { name: docker-clean }
+      - { name: embulk }
       - { name: exiftool }
       - { name: figlet }
       - { name: ffmpeg }
@@ -33,6 +34,7 @@
       # for project
       - { name: memcached }
       - { name: mysql@5.7 }
+      - { name: postgresql }
       - { name: nkf }
       - { name: nodebrew }
       - { name: openssl }
@@ -41,8 +43,6 @@
       - { name: pandoc }
       - { name: peco }
       - { name: python }
-      - { name: python, state: unlink }
-      - { name: python@2 }
       - { name: reattach-to-user-namespace }
       - { name: rename }
       - { name: sendemail }
@@ -57,6 +57,9 @@
       - { name: zsh-completions }
       # required from phpenv and php-build
       # see also https://qiita.com/0tofu/items/e95867ebc9dadf58cc70
+      # Catalina では別途
+      # export PHP_BUILD_CONFIGURE_OPTS="--with-libedit=$(brew --prefix libedit)"
+      # を実行時にも指定しなければならない。
       - { name: bison }
       - { name: bzip2 }
       - { name: zlib }
