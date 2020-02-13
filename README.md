@@ -24,5 +24,10 @@ $ ansible-playbook localhost.yml -i hosts --skip-tags=brew,cask
 
 -----
 
-- anyenv, jenv, phpenv, rbenv, nodenv を手動インストール
-- プロジェクト用の Oracle Java JDK8 はライセンス同意等が必要なので手動インストール
+## 手動インストール
+
+- anyenv, jenv, phpenv, rbenv, nodenv
+- プロジェクト用の Oracle Java JDK8 （ライセンス同意等が必要なので）
+- sdkman, gradle
+- Office （旧PCのライセンスを削除しておくこと）
+- ssh の config

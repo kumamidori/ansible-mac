@@ -31,6 +31,7 @@
       - { name: openjdk@11 }
       - { name: jq }
       - { name: mas }
+      - { name: maven }
       # for project
       - { name: memcached }
       - { name: mysql@5.7 }
@@ -72,6 +73,7 @@
       - { name: rabbitmq-c }
 
     homebrew_cask_packages:
+      - adoptopenjdk8
       - alfred
       - appcleaner
       - avast-security
@@ -100,12 +102,14 @@
       - { name: Keynote, id: 409183694 }
       - { name: "Be Focused - Focus Timer", id: 973134470 }
 
+    embulk_plugins:
+      - embulk-input-s3
+      - embulk-filter-to_json
+
     composer_packages:
       - { name: "hirak/prestissimo" }
 
     npm_packages:
-      - { name: grunt }
-      - { name: grunt-cli }
       - { name: gulp }
       - { name: karma }
       - { name: less }
@@ -113,13 +117,6 @@
       - { name: typescript }
       - { name: typings }
       - { name: yarn }
-
-    apple_defaults:
-      # Finder: Show dotfiles
-      - domain: finder
-        key: AppleShowAllFiles
-        type: bool
-        value: true
 
   handlers:
     - name: run fc-cache
@@ -153,6 +150,13 @@
       with_items: "{{ homebrew_packages }}"
       tags:
         - brew
+
+    # Embulk
+    - name: install embulk pliugins
+      shell: embulk gem install "{{ item }}"
+      with_items: "{{ embulk_plugins }}"
+      tags:
+        - embulk
 
     # mas install
     - name: install mas (App Store) packages
@@ -209,24 +213,10 @@
     #  tags:
     #    - selenium
 
-    # configure mysql
-    - name: chown mysql directory
-      file: path=/usr/local/var/mysql owner=_mysql group=_mysql recurse=yes
-      become: yes
-      become_method: sudo
-      tags:
-        - mysql
-
-    # Mac
-    - name: set com.apple defaults
-      osx_defaults:
-        host: "{{ item.host | default() }}"
-        domain: "com.apple.{{ item.domain }}"
-        key: "{{ item.key }}"
-        type: "{{ item.type }}"
-        value: "{{ item.value | default() }}"
-      register: defaults_out
-      with_items:
-        - "{{ apple_defaults }}"
-      tags:
-        - setting
+#    # configure mysql
+#    - name: chown mysql directory
+#      file: path=/usr/local/var/mysql owner=_mysql group=_mysql recurse=yes
+#      become: yes
+#      become_method: sudo
+#      tags:
+#        - mysql
