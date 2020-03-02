@@ -13,6 +13,7 @@
       - { name: composer }
       - { name: coreutils }
       - { name: diff-so-fancy }
+      - { name: deployer }
       - { name: docker-clean }
       - { name: embulk }
       - { name: exiftool }
@@ -92,11 +93,13 @@
       - iterm2
       - kindle
       - phpstorm
+      - openoffice
       - sequel-pro
       - slack
       - skitch
-      - visual-studio-code
       - typora
+      - the-unarchiver
+      - visual-studio-code
 
     mas_packages:
       - { name: Keynote, id: 409183694 }
