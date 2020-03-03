@@ -7,6 +7,8 @@
       - homebrew/cask-versions
 
     homebrew_packages:
+      - { name: autoconf }
+      - { name: automake }
       - { name: ansible }
       - { name: ant }
       - { name: awscli }
@@ -31,6 +33,7 @@
       # for project
       - { name: openjdk@11 }
       - { name: jq }
+      - { name: libmcrypt }
       - { name: mas }
       - { name: maven }
       # for project

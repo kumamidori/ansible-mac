@@ -31,3 +31,8 @@ $ ansible-playbook localhost.yml -i hosts --skip-tags=brew,cask
 - sdkman, gradle
 - Office （旧PCのライセンスを削除しておくこと）
 - ssh の config
+- gem
+
+```
+$ gem install docker-sync
+```
