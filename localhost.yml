@@ -17,6 +17,7 @@
       - { name: diff-so-fancy }
       - { name: deployer }
       - { name: docker-clean }
+      - { name: docker-machine }
       - { name: embulk }
       - { name: exiftool }
       - { name: figlet }
