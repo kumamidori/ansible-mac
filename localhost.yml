@@ -12,6 +12,7 @@
       - { name: ansible }
       - { name: ant }
       - { name: awscli }
+      - { name: ccze }
       - { name: composer }
       - { name: coreutils }
       - { name: diff-so-fancy }
