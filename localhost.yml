@@ -29,6 +29,7 @@
       - { name: graphviz }
       - { name: htop-osx }
       - { name: httpd }
+      - { name: httpie }
       - { name: hub }
       - { name: imagemagick }
       - { name: iproute2mac }
@@ -99,7 +100,8 @@
       - kindle
       - phpstorm
       - openoffice
-      - sequel-pro
+      # Mojaveで落ちる
+      # - sequel-pro
       - slack
       - skitch
       - typora
