@@ -128,6 +128,22 @@
       - { name: typings }
       - { name: yarn }
 
+    osx_settings:
+      # ファイル拡張子を常に表示
+      - {
+        domain: NSGlobalDomain,
+        key: AppleShowAllExtensions,
+        type: bool,
+        value: true
+      }
+      # Finder: Show dotfiles
+      - {
+        domain: finder,
+        key: AppleShowAllFiles,
+        type: bool,
+        value: true
+      }
+
   handlers:
     - name: run fc-cache
       shell: fc-cache -vf
@@ -216,6 +232,15 @@
       file: src=/usr/local/share/zsh-completions dest=~/.oh-my-zsh/custom/plugins/zsh-completions state=link
       tags:
         - zsh
+
+    - name: Set OS X Defaults
+      osx_defaults:
+        domain: "{{ item.domain }}"
+        key: "{{ item.key }}"
+        type: "{{ item.type }}"
+        value: "{{ item.value }}"
+        state: "{{ item.state|default('present') }}"
+      with_items: "{{ osx_settings }}"
 
     # install for project old Selenium
     #- name: install Selenium Server
