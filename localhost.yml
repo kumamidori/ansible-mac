@@ -118,6 +118,7 @@
 
     composer_packages:
       - { name: "hirak/prestissimo" }
+      - { name: "grasmash/xdebug-toggle" }
 
     npm_packages:
       - { name: gulp }
