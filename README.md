@@ -36,3 +36,8 @@ $ ansible-playbook localhost.yml -i hosts --skip-tags=brew,cask
 ```
 $ gem install docker-sync
 ```
+
+## Links
+
+### 設定
+- [CharlesでLocalProxy通したときHTTPSのページが信頼されない問題 \- Qiita](https://qiita.com/yd_niku/items/569df587bc17f29fd7ee)
