@@ -104,6 +104,7 @@
       # - sequel-pro
       - slack
       - skitch
+      - skype
       - typora
       - the-unarchiver
       - visual-studio-code
@@ -115,6 +116,7 @@
     embulk_plugins:
       - embulk-input-s3
       - embulk-filter-to_json
+      - embulk-output-bigquery
 
     composer_packages:
       - { name: "hirak/prestissimo" }

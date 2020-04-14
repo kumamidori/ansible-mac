@@ -37,6 +37,8 @@ $ ansible-playbook localhost.yml -i hosts --skip-tags=brew,cask
 $ gem install docker-sync
 ```
 
+- digdag
+
 ## Links
 
 ### 設定
