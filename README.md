@@ -26,7 +26,7 @@ $ ansible-playbook localhost.yml -i hosts --skip-tags=brew,cask
 
 ## 手動インストール
 
-- anyenv, jenv, phpenv, rbenv, nodenv
+- anyenv, jenv, phpenv, rbenv, nodenv, pyenv
 - プロジェクト用の Oracle Java JDK8 （ライセンス同意等が必要なので）
 - sdkman, gradle
 - Office （旧PCのライセンスを削除しておくこと）
@@ -39,7 +39,6 @@ $ gem install docker-sync
 
 - digdag
 
-## Links
-
 ### 設定
+
 - [CharlesでLocalProxy通したときHTTPSのページが信頼されない問題 \- Qiita](https://qiita.com/yd_niku/items/569df587bc17f29fd7ee)
