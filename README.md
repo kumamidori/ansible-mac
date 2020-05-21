@@ -42,3 +42,9 @@ $ gem install docker-sync
 ### 設定
 
 - [CharlesでLocalProxy通したときHTTPSのページが信頼されない問題 \- Qiita](https://qiita.com/yd_niku/items/569df587bc17f29fd7ee)
+
+## ソースコードについて
+
+[ttskch/ansible\-mac:](https://github.com/ttskch/ansible-mac)
+
+を参考にして自分用に設定したもの。

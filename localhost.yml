@@ -42,6 +42,7 @@
       # for project
       - { name: memcached }
       - { name: mysql@5.7 }
+      - { name: nginx }
       - { name: postgresql }
       - { name: nkf }
       - { name: nodebrew }
@@ -95,6 +96,7 @@
       - flash-player
       - google-chrome
       - google-japanese-ime
+      - hex-fiend
       - intellij-idea-ce
       - iterm2
       - kindle
