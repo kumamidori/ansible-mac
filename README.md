@@ -24,12 +24,16 @@ $ ansible-playbook localhost.yml -i hosts --skip-tags=brew,cask
 
 -----
 
-## 手動インストール
+## 手動インストール（自分用メモ）
 
 - anyenv, jenv, phpenv, rbenv, nodenv, pyenv
+- homebrew の php は deployer と composer_packages で利用
 - プロジェクト用の Oracle Java JDK8 （ライセンス同意等が必要なので）
-- sdkman, gradle
+- Charles と Alfred は有償版ライセンス有り
 - Office （旧PCのライセンスを削除しておくこと）
+- digdag
+- sdkman, gradle
+- symfony CLI は anyenv の PHP を認識してくれない（未調査） ref. [Issue #119 symfony/cli](https://github.com/symfony/cli/issues/119)
 - ssh の config
 - gem
 
@@ -37,7 +41,7 @@ $ ansible-playbook localhost.yml -i hosts --skip-tags=brew,cask
 $ gem install docker-sync
 ```
 
-- digdag
+
 
 ### 設定
 
