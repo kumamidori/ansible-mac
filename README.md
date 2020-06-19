@@ -24,28 +24,27 @@ $ ansible-playbook localhost.yml -i hosts --skip-tags=brew,cask
 
 -----
 
-## 手動インストール（自分用メモ）
+## Manual Install（自分用メモ）
 
 - anyenv, jenv, phpenv, rbenv, nodenv, pyenv
-- homebrew の php は deployer と composer_packages で利用
+- homebrew の php は deployer と composer_packages インストールで利用
+- install Composer "each phpenv version"（ngyuki/phpenv-composer clone into "~/.anyenv/envs/phpenv/plugins/", rehash, composer i "hirak/prestissimo ）
 - プロジェクト用の Oracle Java JDK8 （ライセンス同意等が必要なので）
 - Charles と Alfred は有償版ライセンス有り
 - Office （旧PCのライセンスを削除しておくこと）
 - digdag
 - sdkman, gradle
-- symfony CLI は anyenv の PHP を認識してくれない（未調査） ref. [Issue #119 symfony/cli](https://github.com/symfony/cli/issues/119)
-- ssh の config
+- can't symfony CLI use anyenv PHP ref. [Issue #119 symfony/cli](https://github.com/symfony/cli/issues/119)
+- ssh config
 - gem
 
 ```
 $ gem install docker-sync
 ```
 
-
-
 ### 設定
 
-- [CharlesでLocalProxy通したときHTTPSのページが信頼されない問題 \- Qiita](https://qiita.com/yd_niku/items/569df587bc17f29fd7ee)
+- Charles (ref.[CharlesでLocalProxy通したときHTTPSのページが信頼されない問題 \- Qiita](https://qiita.com/yd_niku/items/569df587bc17f29fd7ee))
 
 ## ソースコードについて
 

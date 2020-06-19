@@ -122,6 +122,7 @@
     composer_packages:
       - { name: "hirak/prestissimo" }
       - { name: "grasmash/xdebug-toggle" }
+      - { name: "pds/skeleton" }
 
     npm_packages:
       - { name: gulp }
@@ -237,6 +238,12 @@
       tags:
         - zsh
 
+    # phpenv composer （手動で ~/.anyenv/envs/phpenv/plugins/ に入れるのでキャッシュのため）
+    - name: get phpenv-composer
+      shell: sh -c "ghq get ngyuki/phpenv-composer"
+      tags:
+        - phpenv
+
     - name: Set OS X Defaults
       osx_defaults:
         domain: "{{ item.domain }}"
@@ -245,17 +252,3 @@
         value: "{{ item.value }}"
         state: "{{ item.state|default('present') }}"
       with_items: "{{ osx_settings }}"
-
-    # install for project old Selenium
-    #- name: install Selenium Server
-    #  get_url: url="https://repo1.maven.org/maven2/org/seleniumhq/selenium/selenium-server/3.6.0/selenium-server-3.6.0.jar" dest=/tmp
-    #  tags:
-    #    - selenium
-
-#    # configure mysql
-#    - name: chown mysql directory
-#      file: path=/usr/local/var/mysql owner=_mysql group=_mysql recurse=yes
-#      become: yes
-#      become_method: sudo
-#      tags:
-#        - mysql
