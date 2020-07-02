@@ -32,6 +32,7 @@
       - { name: hub }
       - { name: imagemagick }
       - { name: iproute2mac }
+      - { name: krb5 }
       - { name: openjdk@11 } # for project
       - { name: jq }
       - { name: libmcrypt }
@@ -50,6 +51,7 @@
       - { name: peco }
       - { name: php }
       - { name: composer }
+      - { name: pkg-config }
       - { name: python }
       - { name: reattach-to-user-namespace }
       - { name: rename }
@@ -83,7 +85,6 @@
       - adoptopenjdk8
       - alfred
       - appcleaner
-      - avast-security
       - caffeine
       - camunda-modeler
       - charles
