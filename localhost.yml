@@ -25,6 +25,7 @@
       - { name: git }
       - { name: ghq }
       - { name: gnu-sed }
+      - { name: go }
       - { name: graphviz }
       - { name: htop-osx }
       - { name: httpd }
@@ -135,14 +136,14 @@
       - { name: yarn }
 
     osx_settings:
-      # ファイル拡張子を常に表示
+      # Display the file extensions in Finder
       - {
         domain: NSGlobalDomain,
         key: AppleShowAllExtensions,
         type: bool,
         value: true
       }
-      # Finder: Show dotfiles
+      # Show all hidden files in Finder
       - {
         domain: finder,
         key: AppleShowAllFiles,
