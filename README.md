@@ -29,6 +29,7 @@ $ ansible-playbook localhost.yml -i hosts --skip-tags=brew,cask
 - anyenv, jenv, phpenv, rbenv, nodenv, pyenv
 - homebrew の php は deployer と composer_packages インストールで利用
 - install Composer "each phpenv version"（ngyuki/phpenv-composer clone into "~/.anyenv/envs/phpenv/plugins/", rehash, composer i "hirak/prestissimo ）
+- symfony CLI
 - プロジェクト用の Oracle Java JDK8 （ライセンス同意等が必要なので）
 - Charles と Alfred は有償版ライセンス有り
 - Office （旧PCのライセンスを削除しておくこと）
