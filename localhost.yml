@@ -81,6 +81,7 @@
       # to pecl install amqp
       # see also https://stackoverflow.com/questions/51818515/installing-amqp-on-mac-with-brew#answer-52832365
       - { name: rabbitmq-c }
+      - { name: wrk }
 
     homebrew_cask_packages:
       - adoptopenjdk8
