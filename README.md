@@ -24,9 +24,35 @@ $ ansible-playbook localhost.yml -i hosts --skip-tags=brew,cask
 
 -----
 
-## Manual Install（自分用メモ）
+## 自分用メモ
+### Backup Manually
 
-- anyenv, jenv, phpenv, rbenv, nodenv, pyenv
+- .ssh（config、キー）
+- 1password バックアップ
+- zsh のヒストリ
+- Office ライセンス
+
+### Install Manually
+
+#### anyenv
+
+- anyenv(plugin: anyenv-update, anyenv-git), jenv, phpenv, rbenv, nodenv, pyenv 
+- anyenv はPHPビルドオプションを別リポジトリの別ブランチで管理しているので homebrew ではなく git で入れる
+
+#### jenv
+
+- `/usr/libexec/java_home -V`
+- `jenv add "/Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home"`
+- Java 1.8 for project (Selenium, embulk)
+```
+$ open /usr/local/Caskroom/adoptopenjdk8
+Run manually: OpenJDK8U-jdk_x64_mac_hotspot_8u262b10.pkg
+＜手動実行しないとインストールされない（ライセンス同意があるためか？） 
+$ /usr/libexec/java_home -V
+```
+- `jenv add "/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home"`
+
+#### etc.
 - homebrew の php は deployer と composer_packages インストールで利用
 - install Composer "each phpenv version"（ngyuki/phpenv-composer clone into "~/.anyenv/envs/phpenv/plugins/", rehash, composer i "hirak/prestissimo ）
 - symfony CLI
@@ -38,6 +64,8 @@ $ ansible-playbook localhost.yml -i hosts --skip-tags=brew,cask
 - can't symfony CLI use anyenv PHP ref. [Issue #119 symfony/cli](https://github.com/symfony/cli/issues/119)
 - ssh config
 - gem
+- Java1.8 インストール後にhomebrew で eumblk インストール（embulk, embulk-input-s3, embulk-filter-to_json, embulk-output-bigquery）
+- nodenv インストール後に gulp, karma, less, npm-check-updates, typescript, typings, name: yarn
 
 ```
 $ gem install docker-sync

@@ -7,10 +7,10 @@
       - homebrew/cask-versions
 
     homebrew_packages:
-      - { name: autoconf }
-      - { name: automake }
       - { name: ansible }
       - { name: ant }
+      - { name: autoconf }
+      - { name: automake }
       - { name: awscli }
       - { name: ccze }
       - { name: coreutils }
@@ -18,10 +18,6 @@
       - { name: deployer }
       - { name: docker-clean }
       - { name: docker-machine }
-      - { name: embulk }
-      - { name: exiftool }
-      - { name: figlet }
-      - { name: ffmpeg }
       - { name: git }
       - { name: ghq }
       - { name: gnu-sed }
@@ -34,7 +30,7 @@
       - { name: imagemagick }
       - { name: iproute2mac }
       - { name: krb5 }
-      - { name: openjdk@11 } # for project
+      - { name: openjdk@11 } # for project (jenv cannot download language and install)
       - { name: jq }
       - { name: libmcrypt }
       - { name: mas }
@@ -46,7 +42,6 @@
       - { name: nkf }
       - { name: nodebrew }
       - { name: openssl }
-      - { name: p7zip }
       - { name: packer }
       - { name: pandoc }
       - { name: peco }
@@ -54,9 +49,6 @@
       - { name: composer }
       - { name: pkg-config }
       - { name: python }
-      - { name: reattach-to-user-namespace }
-      - { name: rename }
-      - { name: sendemail }
       - { name: sqlite }
       - { name: ssh-copy-id }
       - { name: the_silver_searcher }
@@ -84,13 +76,12 @@
       - { name: wrk }
 
     homebrew_cask_packages:
-      - adoptopenjdk8
+      - 1password
+      - adoptopenjdk8 # for project(embulk depends java8)
       - alfred
-      - appcleaner
-      - caffeine
-      - camunda-modeler
       - charles
       - coteditor
+      - discord
       - docker
       - dropbox
       - eclipse-java
@@ -112,29 +103,16 @@
       - typora
       - the-unarchiver
       - visual-studio-code
+      - zoom
 
     mas_packages:
       - { name: Keynote, id: 409183694 }
       - { name: "Be Focused - Focus Timer", id: 973134470 }
 
-    embulk_plugins:
-      - embulk-input-s3
-      - embulk-filter-to_json
-      - embulk-output-bigquery
-
     composer_packages:
       - { name: "hirak/prestissimo" }
       - { name: "grasmash/xdebug-toggle" }
       - { name: "pds/skeleton" }
-
-    npm_packages:
-      - { name: gulp }
-      - { name: karma }
-      - { name: less }
-      - { name: npm-check-updates }
-      - { name: typescript }
-      - { name: typings }
-      - { name: yarn }
 
     osx_settings:
       # Display the file extensions in Finder
@@ -151,6 +129,7 @@
         type: bool,
         value: true
       }
+      # Finder: Show dotfiles は試したら効かなかったので未設定
 
   handlers:
     - name: run fc-cache
@@ -185,13 +164,6 @@
       tags:
         - brew
 
-    # Embulk
-    - name: install embulk pliugins
-      shell: embulk gem install "{{ item }}"
-      with_items: "{{ embulk_plugins }}"
-      tags:
-        - embulk
-
     # mas install
     - name: install mas (App Store) packages
       shell: mas install "{{ item.id }}"
@@ -216,13 +188,6 @@
       tags:
         - composer
 
-    # npm -g install
-    - name: install npm packages
-      npm: name="{{ item.name }}" state="{{ item.state|default('latest') }}" version="{{ item.version|default() }}" global=yes
-      with_items: "{{ npm_packages }}"
-      tags:
-        - npm
-
     # gem install bundler
     - name: install bundler
       gem: name="bundler" state="latest"
@@ -246,6 +211,10 @@
       shell: sh -c "ghq get ngyuki/phpenv-composer"
       tags:
         - phpenv
+
+    # For the system Java wrappers to find openjdk@11, symlink it
+    - name: symlink openjdk@11
+      shell: sudo ln -sfn /usr/local/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-11.jdk
 
     - name: Set OS X Defaults
       osx_defaults:
