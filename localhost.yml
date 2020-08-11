@@ -114,23 +114,6 @@
       - { name: "grasmash/xdebug-toggle" }
       - { name: "pds/skeleton" }
 
-    osx_settings:
-      # Display the file extensions in Finder
-      - {
-        domain: NSGlobalDomain,
-        key: AppleShowAllExtensions,
-        type: bool,
-        value: true
-      }
-      # Show all hidden files in Finder
-      - {
-        domain: finder,
-        key: AppleShowAllFiles,
-        type: bool,
-        value: true
-      }
-      # Finder: Show dotfiles は試したら効かなかったので未設定
-
   handlers:
     - name: run fc-cache
       shell: fc-cache -vf
@@ -217,10 +200,6 @@
       shell: sudo ln -sfn /usr/local/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-11.jdk
 
     - name: Set OS X Defaults
-      osx_defaults:
-        domain: "{{ item.domain }}"
-        key: "{{ item.key }}"
-        type: "{{ item.type }}"
-        value: "{{ item.value }}"
-        state: "{{ item.state|default('present') }}"
-      with_items: "{{ osx_settings }}"
+      shell: ./var/set_mac.sh
+      register: set_mac_check
+      failed_when: set_mac_check.rc not in [0]
