@@ -18,6 +18,7 @@
       - { name: deployer }
       - { name: docker-clean }
       - { name: docker-machine }
+      - { name: embulk }
       - { name: git }
       - { name: ghq }
       - { name: gnu-sed }
@@ -114,6 +115,23 @@
       - { name: "grasmash/xdebug-toggle" }
       - { name: "pds/skeleton" }
 
+    npm_packages:
+      - { name: gulp }
+      - { name: karma }
+      - { name: less }
+      - { name: npm-check-updates }
+      - { name: typescript }
+      - { name: typings }
+      - { name: yarn }
+
+    embulk_plugins:
+      - embulk-input-s3
+      - embulk-filter-to_json
+      - embulk-output-bigquery
+
+    gems:
+      - docker-sync
+
   handlers:
     - name: run fc-cache
       shell: fc-cache -vf
@@ -203,3 +221,25 @@
       shell: ./var/set_mac.sh
       register: set_mac_check
       failed_when: set_mac_check.rc not in [0]
+
+    # ここから以下は anyenv 構築後に実行しなければならない
+    # npm -g install
+    - name: install npm packages
+      npm: name="{{ item.name }}" state="{{ item.state|default('latest') }}" version="{{ item.version|default() }}" global=yes
+      with_items: "{{ npm_packages }}"
+      tags:
+        - npm
+
+    # Embulk
+    - name: install embulk pliugins
+      shell: embulk gem install "{{ item }}"
+      with_items: "{{ embulk_plugins }}"
+      tags:
+        - embulk
+
+    # gem
+    - name: install gems
+      shell: gem install "{{ item }}"
+      with_items: "{{ gems }}"
+      tags:
+        - gem

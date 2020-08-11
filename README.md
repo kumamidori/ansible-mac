@@ -4,6 +4,13 @@
 
 ### Prepare
 
+- Install XCode
+
+https://apps.apple.com/us/app/xcode/id497799835?mt=12
+
+- Install Homebrew
+- Install python and ansible
+
 ```bash
 $ brew update
 $ brew install python ansible
@@ -25,12 +32,13 @@ $ ansible-playbook localhost.yml -i hosts --skip-tags=brew,cask
 -----
 
 ## 自分用メモ
-### Backup Manually
+### Backup Manually (Mac TimeMachine)
 
-- .ssh（config、キー）
-- 1password バックアップ
-- zsh のヒストリ
-- Office ライセンス
+- .ssh（config, key）
+- 1password data
+- zsh history
+- Office License
+- /etc/hosts
 
 ### Install Manually
 
@@ -47,29 +55,27 @@ $ ansible-playbook localhost.yml -i hosts --skip-tags=brew,cask
 ```
 $ open /usr/local/Caskroom/adoptopenjdk8
 Run manually: OpenJDK8U-jdk_x64_mac_hotspot_8u262b10.pkg
-＜手動実行しないとインストールされない（ライセンス同意があるためか？） 
+＜手動実行しないとインストールされない（ライセンス同意があるため）
 $ /usr/libexec/java_home -V
 ```
 - `jenv add "/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home"`
+
+#### playbook guard conditions
+
+- anyenv で Java1.8 インストール後にhomebrew で embulk インストール（embulk, embulk-input-s3, embulk-filter-to_json, embulk-output-bigquery）
+- anyenv で nodenv インストール後に gulp, karma, less, npm-check-updates, typescript, typings, yarn
+- anyenv で rbenv インストール後に docker-sync
 
 #### etc.
 - homebrew の php は deployer と composer_packages インストールで利用
 - install Composer "each phpenv version"（ngyuki/phpenv-composer clone into "~/.anyenv/envs/phpenv/plugins/", rehash, composer i "hirak/prestissimo ）
 - symfony CLI
-- プロジェクト用の Oracle Java JDK8 （ライセンス同意等が必要なので）
 - Charles と Alfred は有償版ライセンス有り
 - Office （旧PCのライセンスを削除しておくこと）
 - digdag
 - sdkman, gradle
 - can't symfony CLI use anyenv PHP ref. [Issue #119 symfony/cli](https://github.com/symfony/cli/issues/119)
 - ssh config
-- gem
-- Java1.8 インストール後にhomebrew で eumblk インストール（embulk, embulk-input-s3, embulk-filter-to_json, embulk-output-bigquery）
-- nodenv インストール後に gulp, karma, less, npm-check-updates, typescript, typings, name: yarn
-
-```
-$ gem install docker-sync
-```
 
 ### 設定
 
