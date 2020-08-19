@@ -34,7 +34,9 @@ $ ansible-playbook localhost.yml -i hosts --skip-tags=brew,cask
 ## 自分用メモ
 ### Backup Manually (Mac TimeMachine)
 
+- .aws
 - .ssh（config, key）
+- *.pem (ssh private keys)
 - 1password data
 - zsh history
 - Office License
@@ -62,9 +64,9 @@ $ /usr/libexec/java_home -V
 
 #### playbook guard conditions
 
-- anyenv で Java1.8 インストール後にhomebrew で embulk インストール（embulk, embulk-input-s3, embulk-filter-to_json, embulk-output-bigquery）
-- anyenv で nodenv インストール後に gulp, karma, less, npm-check-updates, typescript, typings, yarn
-- anyenv で rbenv インストール後に docker-sync
+- [anyenv] after Java1.8 install: install embulk by ansible（embulk, embulk-input-s3, embulk-filter-to_json, embulk-output-bigquery）
+- [anyenv] after nodenv: -g gulp, karma, less, npm-check-updates, typescript, typings, yarn
+- [anyenv] after rbenv: docker-sync
 
 #### etc.
 - homebrew の php は deployer と composer_packages インストールで利用

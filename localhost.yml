@@ -41,7 +41,6 @@
       - { name: nginx }
       - { name: postgresql }
       - { name: nkf }
-      - { name: nodebrew }
       - { name: openssl }
       - { name: packer }
       - { name: pandoc }
@@ -114,15 +113,6 @@
       - { name: "hirak/prestissimo" }
       - { name: "grasmash/xdebug-toggle" }
       - { name: "pds/skeleton" }
-
-    npm_packages:
-      - { name: gulp }
-      - { name: karma }
-      - { name: less }
-      - { name: npm-check-updates }
-      - { name: typescript }
-      - { name: typings }
-      - { name: yarn }
 
     embulk_plugins:
       - embulk-input-s3
@@ -223,13 +213,6 @@
       failed_when: set_mac_check.rc not in [0]
 
     # ここから以下は anyenv 構築後に実行しなければならない
-    # npm -g install
-    - name: install npm packages
-      npm: name="{{ item.name }}" state="{{ item.state|default('latest') }}" version="{{ item.version|default() }}" global=yes
-      with_items: "{{ npm_packages }}"
-      tags:
-        - npm
-
     # Embulk
     - name: install embulk pliugins
       shell: embulk gem install "{{ item }}"
