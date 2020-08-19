@@ -95,11 +95,12 @@
       - kindle
       - phpstorm
       - openoffice
-      # Mojaveで落ちる
-      # - sequel-pro
+      # "sequel-pro" stable version crashes in Mojave
       - slack
       - skitch
       - skype
+      # Unable to connect to simple MySQL docker container
+      - tableplus
       - typora
       - the-unarchiver
       - visual-studio-code
@@ -211,6 +212,13 @@
       shell: ./var/set_mac.sh
       register: set_mac_check
       failed_when: set_mac_check.rc not in [0]
+
+    # Sequel Pro Nightly build (because stable version crashes in Mojave)
+    - name: install SequelPro nightly build
+      unarchive:
+        src: "https://sequelpro.com/builds/Sequel-Pro-Build-97c1b85783.zip"
+        dest: "~/Applications/"
+        remote_src: yes
 
     # ここから以下は anyenv 構築後に実行しなければならない
     # Embulk

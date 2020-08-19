@@ -34,13 +34,15 @@ $ ansible-playbook localhost.yml -i hosts --skip-tags=brew,cask
 ## 自分用メモ
 ### Backup Manually (Mac TimeMachine)
 
+- dotfiles/.gitignore ref. https://github.com/kumamidori/dotfiles
 - .aws
 - .ssh（config, key）
 - *.pem (ssh private keys)
 - 1password data
-- zsh history
 - Office License
 - /etc/hosts
+- zsh history
+- SequelPro query history
 
 ### Install Manually
 
