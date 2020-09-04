@@ -104,7 +104,7 @@
       - typora
       - the-unarchiver
       - visual-studio-code
-      - zoom
+      - zoomus
 
     mas_packages:
       - { name: Keynote, id: 409183694 }
