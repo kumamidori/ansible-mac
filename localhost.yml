@@ -220,6 +220,13 @@
         dest: "~/Applications/"
         remote_src: yes
 
+    - name: install Json Editor app
+      unarchive:
+        src: https://github.com/fand/json-editor-app/releases/download/v1.0.0/JSON.Editor-darwin-x64-1.0.0.zip
+        dest: ~/Applications
+        remote_src: yes
+      ignore_errors: yes
+
     # ここから以下は anyenv 構築後に実行しなければならない
     # Embulk
     - name: install embulk pliugins
