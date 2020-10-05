@@ -119,6 +119,7 @@
       - embulk-input-s3
       - embulk-filter-to_json
       - embulk-output-bigquery
+      - embulk-input-google_spreadsheets
 
     gems:
       - docker-sync
@@ -227,9 +228,33 @@
         remote_src: yes
       ignore_errors: yes
 
+    - name: fetch SDKMAN
+      uri:
+        url: https://get.sdkman.io
+        return_content: yes
+      register: get_sdkman_io
+
+    - name: install SDKMAN
+      shell: "{{ get_sdkman_io.content }}"
+
+    - name: configure SDKMAN
+      shell: "chmod 755  ~/.sdkman/bin/sdkman-init.sh"
+
+    - name: digdag location directory
+      file: path=~/bin state=directory mode=0755
+
+    - name: fetch digdag
+      get_url:
+        url: "https://dl.digdag.io/digdag-latest"
+        dest: "~/bin/digdag"
+        force: yes
+    - name: configure digdag
+      shell: "chmod +x ~/bin/digdag"
+
+
     # ここから以下は anyenv 構築後に実行しなければならない
     # Embulk
-    - name: install embulk pliugins
+    - name: install embulk plugins
       shell: embulk gem install "{{ item }}"
       with_items: "{{ embulk_plugins }}"
       tags:
