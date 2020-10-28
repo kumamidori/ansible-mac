@@ -37,10 +37,12 @@
       - { name: mas }
       - { name: maven }
       - { name: memcached }
+      - { name: mkcert }
       - { name: mysql@5.7 } # for project
       - { name: nginx }
       - { name: postgresql }
       - { name: nkf }
+      - { name: nss }
       - { name: openssl }
       - { name: packer }
       - { name: pandoc }
@@ -109,9 +111,9 @@
     mas_packages:
       - { name: Keynote, id: 409183694 }
       - { name: "Be Focused - Focus Timer", id: 973134470 }
+      - { name: "microsoft-remote-desktop", id: 1295203466 }
 
     composer_packages:
-      - { name: "hirak/prestissimo" }
       - { name: "grasmash/xdebug-toggle" }
       - { name: "pds/skeleton" }
 
@@ -251,6 +253,8 @@
     - name: configure digdag
       shell: "chmod +x ~/bin/digdag"
 
+    - name: SSL
+      shell: "mkcert -install"
 
     # ここから以下は anyenv 構築後に実行しなければならない
     # Embulk

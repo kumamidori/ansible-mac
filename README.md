@@ -72,7 +72,7 @@ $ /usr/libexec/java_home -V
 
 #### etc.
 - homebrew の php は deployer と composer_packages インストールで利用
-- install Composer "each phpenv version"（ngyuki/phpenv-composer clone into "~/.anyenv/envs/phpenv/plugins/", rehash, composer i "hirak/prestissimo ）
+- install Composer "each phpenv version"（ngyuki/phpenv-composer clone into "~/.anyenv/envs/phpenv/plugins/", rehash ）
 - symfony CLI
 - Charles と Alfred は有償版ライセンス有り
 - Office （旧PCのライセンスを削除しておくこと）
