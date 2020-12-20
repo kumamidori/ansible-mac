@@ -6,6 +6,7 @@
       - homebrew/cask-drivers
       - homebrew/cask-versions
       - eugenmayer/dockersync
+      - blackfireio/homebrew-blackfire
 
     homebrew_packages:
       - { name: ansible }
@@ -13,6 +14,8 @@
       - { name: autoconf }
       - { name: automake }
       - { name: awscli }
+      - { name: blackfire-agent }
+      - { name: blackfire-php73 }
       - { name: ccze }
       - { name: coreutils }
       - { name: diff-so-fancy }
@@ -42,6 +45,7 @@
       - { name: memcached }
       - { name: mkcert }
       - { name: mysql@5.7 } # for project
+      - { name: mutagen-io/mutagen/mutagen-beta }
       - { name: nginx }
       - { name: postgresql }
       - { name: nkf }
@@ -154,7 +158,7 @@
 
     # brew cask install
     - name: install homebrew cask packages
-      homebrew_cask: name="{{ item }}" state=present
+      community.general.homebrew_cask: name="{{ item }}" state=present
       with_items: "{{ homebrew_cask_packages }}"
       ignore_errors: true
       tags:
