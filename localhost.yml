@@ -5,6 +5,7 @@
     homebrew_taps:
       - homebrew/cask-drivers
       - homebrew/cask-versions
+      - eugenmayer/dockersync
 
     homebrew_packages:
       - { name: ansible }
@@ -19,10 +20,12 @@
       - { name: docker-clean }
       - { name: docker-machine }
       - { name: embulk }
+      - { name: fswatch }
       - { name: git }
       - { name: ghq }
       - { name: gnu-sed }
       - { name: go }
+      - { name: golang-migrate }
       - { name: graphviz }
       - { name: htop-osx }
       - { name: httpd }
@@ -51,12 +54,17 @@
       - { name: composer }
       - { name: pkg-config }
       - { name: python }
+      # using "brew edit unox"
+      # modify depends_on "python@3" to depends_on "python@3.8" ↓
+      - { name: eugenmayer/dockersync/unox }
+      - { name: rsync }
       - { name: sqlite }
       - { name: ssh-copy-id }
       - { name: the_silver_searcher }
       - { name: telnet }
       - { name: tig }
       - { name: tree }
+      - {name: unison }
       - { name: wget }
       - { name: zsh }
       - { name: zsh-completions }
@@ -104,7 +112,6 @@
       # Unable to connect to simple MySQL docker container
       - tableplus
       - typora
-      - the-unarchiver
       - visual-studio-code
       - zoomus
 
@@ -112,6 +119,7 @@
       - { name: Keynote, id: 409183694 }
       - { name: "Be Focused - Focus Timer", id: 973134470 }
       - { name: "microsoft-remote-desktop", id: 1295203466 }
+      - { name: "The Unarchiver", id: 425424353 }
 
     composer_packages:
       - { name: "grasmash/xdebug-toggle" }
