@@ -109,7 +109,6 @@
       - kindle
       - phpstorm
       - openoffice
-      # "sequel-pro" stable version crashes in Mojave
       - slack
       - skitch
       - skype
@@ -124,6 +123,7 @@
       - { name: "Be Focused - Focus Timer", id: 973134470 }
       - { name: "microsoft-remote-desktop", id: 1295203466 }
       - { name: "The Unarchiver", id: 425424353 }
+      - { name: "Sequel Ace", id: 1518036000 }
 
     composer_packages:
       - { name: "grasmash/xdebug-toggle" }
