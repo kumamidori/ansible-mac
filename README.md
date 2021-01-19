@@ -14,6 +14,7 @@ https://apps.apple.com/us/app/xcode/id497799835?mt=12
 ```bash
 $ brew update
 $ brew install python ansible
+$ ansible-galaxy collection install community.general
 ```
 
 ### Execute
