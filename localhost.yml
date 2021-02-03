@@ -125,6 +125,7 @@
       - { name: "microsoft-remote-desktop", id: 1295203466 }
       - { name: "The Unarchiver", id: 425424353 }
       - { name: "Sequel Ace", id: 1518036000 }
+      - { name: "ForkLift", id: 412448059}
 
     composer_packages:
       - { name: "grasmash/xdebug-toggle" }
