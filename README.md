@@ -72,6 +72,8 @@ $ /usr/libexec/java_home -V
 - [anyenv] after rbenv: docker-sync
 
 #### etc.
+
+- set iTerm2 automatically log
 - homebrew の php は deployer と composer_packages インストールで利用
 - install Composer "each phpenv version"（ngyuki/phpenv-composer clone into "~/.anyenv/envs/phpenv/plugins/", rehash ）
 - symfony CLI
