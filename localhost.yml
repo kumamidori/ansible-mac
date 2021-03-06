@@ -66,6 +66,7 @@
       - { name: rsync }
       - { name: sqlite }
       - { name: ssh-copy-id }
+      - { name: stripe/stripe-cli/stripe }
       - { name: the_silver_searcher }
       - { name: telnet }
       - { name: tig }
