@@ -83,6 +83,7 @@ $ /usr/libexec/java_home -V
 - sdkman, gradle
 - can't symfony CLI use anyenv PHP ref. [Issue #119 symfony/cli](https://github.com/symfony/cli/issues/119)
 - ssh config
+- Mac - [システム環境設定] - キーボード - [音声入力] オフ
 
 ### 設定
 

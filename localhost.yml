@@ -122,6 +122,7 @@
       - tableplus
       - typora
       - visual-studio-code
+      - wireshark
       - zoomus
 
     mas_packages:
