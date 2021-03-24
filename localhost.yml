@@ -121,6 +121,8 @@
       # Unable to connect to simple MySQL docker container
       - tableplus
       - typora
+      - vagrant
+      - virtualbox
       - visual-studio-code
       - wireshark
       - zoomus
