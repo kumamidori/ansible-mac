@@ -97,7 +97,6 @@
       - adoptopenjdk8 # for project(embulk depends java8)
       - alfred
       - charles
-      - chef-workstation
       - coteditor
       - dbngin
       - deepl
