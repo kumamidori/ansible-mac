@@ -24,6 +24,7 @@
       - { name: docker-clean }
       - { name: docker-machine }
       - { name: embulk }
+      - { name: exa }
       - { name: fswatch }
       - { name: git }
       - { name: git-secrets }
@@ -66,6 +67,8 @@
       # modify depends_on "python@3" to depends_on "python@3.8" ↓
       - { name: eugenmayer/dockersync/unox }
       - { name: rsync }
+      - { name: starship }
+      - { name: sqlite }
       - { name: sqlite }
       - { name: ssh-copy-id }
       - { name: stripe/stripe-cli/stripe }
