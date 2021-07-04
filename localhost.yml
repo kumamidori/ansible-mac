@@ -7,6 +7,7 @@
       - homebrew/cask-versions
       - eugenmayer/dockersync
       - blackfireio/homebrew-blackfire
+      - aws/tap
 
     homebrew_packages:
       - { name: ansible }
@@ -14,6 +15,7 @@
       - { name: autoconf }
       - { name: automake }
       - { name: awscli }
+      - { name: aws-sam-cli }
       - { name: blackfire-agent }
       - { name: blackfire-php73 }
       - { name: ccze }
