@@ -39,7 +39,6 @@
       - { name: htop-osx }
       - { name: httpd }
       - { name: httpie }
-      - { name: hub }
       - { name: icu4c }
       - { name: imagemagick }
       - { name: iproute2mac }
