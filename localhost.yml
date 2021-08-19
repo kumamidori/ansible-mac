@@ -6,7 +6,6 @@
       - homebrew/cask-drivers
       - homebrew/cask-versions
       - eugenmayer/dockersync
-      - blackfireio/homebrew-blackfire
       - aws/tap
 
     homebrew_packages:
@@ -16,9 +15,9 @@
       - { name: automake }
       - { name: awscli }
       - { name: aws-sam-cli }
-      - { name: blackfire-agent }
-      - { name: blackfire-php73 }
+      - { name: bash }
       - { name: ccze }
+      - { name: chezmoi }
       - { name: coreutils }
       - { name: colordiff }
       - { name: diff-so-fancy }

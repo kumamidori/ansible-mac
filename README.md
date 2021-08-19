@@ -51,6 +51,7 @@ $ ansible-playbook localhost.yml -i hosts --skip-tags=brew,cask
 
 - anyenv(plugin: anyenv-update, anyenv-git), jenv, phpenv, rbenv, nodenv, pyenv 
 - anyenv はPHPビルドオプションを別リポジトリの別ブランチで管理しているので homebrew ではなく git で入れる
+- If phpenv crashes again, I'll switch to phpbrew.
 
 #### jenv
 
