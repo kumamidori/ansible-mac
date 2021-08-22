@@ -1,0 +1,143 @@
+# brew tap
+- name: install taps of homebrew
+  homebrew_tap: tap="{{ item }}" state=present
+  with_items: "{{ homebrew_taps }}"
+  tags:
+    - brew
+
+# brew update
+- name: update homebrew
+  homebrew: update_homebrew=yes
+  tags:
+    - brew
+
+# brew cask install
+- name: install homebrew cask packages
+  community.general.homebrew_cask: name="{{ item }}" state=present
+  with_items: "{{ homebrew_cask_packages }}"
+  ignore_errors: true
+  tags:
+    - cask
+
+# brew install
+- name: install homebrew packages
+  homebrew: name="{{ item.name }}" state="{{ item.state|default('latest') }}" install_options="{{ item.install_options|default() }}"
+  with_items: "{{ homebrew_packages }}"
+  tags:
+    - brew
+
+# mas install
+- name: install mas (App Store) packages
+  shell: mas install "{{ item.id }}"
+  with_items: "{{ mas_packages }}"
+  register: ret
+  changed_when: '"already installed" not in ret.stdout'
+  tags:
+    - mas
+
+# mas upgrade
+- name: upgrade all mas (App Store) packages
+  shell: mas upgrade
+  register: ret
+  changed_when: '"Everything is up-to-date" not in ret.stdout'
+  tags:
+    - mas
+
+# composer packages global install
+- name: install composer packages
+  composer: command=require global_command=yes arguments="{{ item.name }}"
+  with_items: "{{ composer_packages }}"
+  tags:
+    - composer
+
+# gem install bundler
+- name: install bundler
+  gem: name="bundler" state="latest"
+  tags:
+    - gem
+
+- name: 'karabiner: make symlink of setting files'
+  file:
+    src: "{{ item }}"
+    dest: ~/Library/Application\ Support/Karabiner/{{ item | basename }}
+    state: link
+    force: yes
+  with_fileglob:
+    - Karabiner/*
+
+# phpenv composer （手動で ~/.anyenv/envs/phpenv/plugins/ に入れるのでキャッシュのため）
+- name: get phpenv-composer
+  shell: sh -c "ghq get ngyuki/phpenv-composer"
+  tags:
+    - phpenv
+
+# For the system Java wrappers to find openjdk@11, symlink it
+- name: symlink openjdk@11
+  shell: sudo ln -sfn /usr/local/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-11.jdk
+
+- name: Set OS X Defaults
+  shell: ./bin/set_mac.sh
+  register: set_mac_check
+  failed_when: set_mac_check.rc not in [0]
+
+# Sequel Pro Nightly build (because stable version crashes in Mojave)
+- name: install SequelPro nightly build
+  unarchive:
+    src: "https://sequelpro.com/builds/Sequel-Pro-Build-97c1b85783.zip"
+    dest: "~/Applications/"
+    remote_src: yes
+
+- name: install Json Editor app
+  unarchive:
+    src: https://github.com/fand/json-editor-app/releases/download/v1.0.0/JSON.Editor-darwin-x64-1.0.0.zip
+    dest: ~/Applications
+    remote_src: yes
+  ignore_errors: yes
+
+- name: fetch SDKMAN
+  uri:
+    url: https://get.sdkman.io
+    return_content: yes
+  register: get_sdkman_io
+
+- name: install SDKMAN
+  shell: "{{ get_sdkman_io.content }}"
+
+- name: configure SDKMAN
+  shell: "chmod 755  ~/.sdkman/bin/sdkman-init.sh"
+
+- name: digdag location directory
+  file: path=~/bin state=directory mode=0755
+
+- name: fetch digdag
+  get_url:
+    url: "https://dl.digdag.io/digdag-latest"
+    dest: "~/bin/digdag"
+    force: yes
+- name: configure digdag
+  shell: "chmod +x ~/bin/digdag"
+
+- name: SSL
+  shell: "mkcert -install"
+
+- name: 1password-cli
+  debug:
+    msg: "Item {{ item.name }}"
+  with_items: "{{ onepassword_cli }}"
+  tags:
+    - 1password
+
+# ここから以下は anyenv 構築後に実行しなければならない
+# Embulk
+- name: install embulk plugins
+  shell: embulk gem install "{{ item }}"
+  with_items: "{{ embulk_plugins }}"
+  tags:
+    - embulk
+
+# gem
+- name: install gems
+  shell: gem install "{{ item }}"
+  with_items: "{{ gems }}"
+  tags:
+    - gem
