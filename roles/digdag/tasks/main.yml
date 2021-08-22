@@ -1,0 +1,28 @@
+- name: digdag location directory
+  file: path=~/bin state=directory mode=0755
+  tags:
+    - digdag
+
+- name: check if digdag exists
+  stat:
+    path: "{{ digdag_bin }}"
+  register: exists_digdag
+  tags:
+    - digdag
+
+- name: fetch digdag jar file
+  get_url:
+    url: "https://dl.digdag.io/digdag-latest"
+    sha256sum: "{{ digdag_jar_csum }}"
+    dest: "{{ digdag_bin }}"
+  when: not exists_digdag
+  vars:
+    digdag_jar_csum: 3d85c052cc4a6d6bf545e1a64b02f8ac3830bc1b7910d7f2d798c297cd4b1c41
+  tags:
+    - digdag
+
+- name: configure digdag
+  file: path={{ digdag_bin }} state=present mode=755
+  when: not exists_digdag
+  tags:
+    - digdag

@@ -95,6 +95,7 @@ homebrew_packages:
 
 homebrew_cask_packages:
   - 1password
+  - 1password-cli
   - adoptopenjdk8 # for project(embulk depends java8)
   - alfred
   - charles
@@ -149,7 +150,3 @@ embulk_plugins:
 
 gems:
   - docker-sync
-
-onepassword_cli:
-  - { name: op_cli_version, value: 1.1.1 }
-  - { name: op_cli_install_path, value: "/usr/local/bin" }

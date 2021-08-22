@@ -106,26 +106,8 @@
 - name: configure SDKMAN
   shell: "chmod 755  ~/.sdkman/bin/sdkman-init.sh"
 
-- name: digdag location directory
-  file: path=~/bin state=directory mode=0755
-
-- name: fetch digdag
-  get_url:
-    url: "https://dl.digdag.io/digdag-latest"
-    dest: "~/bin/digdag"
-    force: yes
-- name: configure digdag
-  shell: "chmod +x ~/bin/digdag"
-
 - name: SSL
   shell: "mkcert -install"
-
-- name: 1password-cli
-  debug:
-    msg: "Item {{ item.name }}"
-  with_items: "{{ onepassword_cli }}"
-  tags:
-    - 1password
 
 # ここから以下は anyenv 構築後に実行しなければならない
 # Embulk
