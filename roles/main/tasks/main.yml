@@ -25,6 +25,7 @@
   with_items: "{{ homebrew_packages }}"
   tags:
     - brew
+    - packages
 
 # mas install
 - name: install mas (App Store) packages

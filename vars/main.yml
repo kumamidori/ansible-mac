@@ -98,6 +98,7 @@ homebrew_cask_packages:
   - 1password-cli
   - adoptopenjdk8 # for project(embulk depends java8)
   - alfred
+  - chef/chef/inspec
   - charles
   - coteditor
   - dbngin
