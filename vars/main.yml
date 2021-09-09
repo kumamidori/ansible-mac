@@ -71,6 +71,7 @@ homebrew_packages:
   - { name: the_silver_searcher }
   - { name: telnet }
   - { name: tig }
+  - { name: tmux }
   - { name: tree }
   - {name: unison }
   - { name: wget }

@@ -87,6 +87,7 @@ $ /usr/libexec/java_home -V
 - Mac - [システム環境設定] - キーボード - [音声入力] オフ
 - Mac - [システム環境設定] - キーボード - [修飾キー] CapsLock OFF
 - Gatling
+- [AWS CLI Session Manager](https://docs.aws.amazon.com/ja_jp/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html#install-plugin-macos)
 
 ### 設定
 
