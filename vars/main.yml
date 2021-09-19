@@ -35,6 +35,7 @@ homebrew_packages:
   - { name: golang-migrate }
   - { name: graphviz }
   - { name: hashicorp/tap/terraform }
+  - { name: hashicorp/tap/packer }
   - { name: htop-osx }
   - { name: httpd }
   - { name: httpie }
