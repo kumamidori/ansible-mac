@@ -3,6 +3,8 @@ homebrew_taps:
   - homebrew/cask-versions
   - eugenmayer/dockersync
   - aws/tap
+  - shivammathur/php
+  - hashicorp/tap
 
 homebrew_packages:
   - { name: ansible }
@@ -12,6 +14,7 @@ homebrew_packages:
   - { name: awscli }
   - { name: aws-sam-cli }
   - { name: bash }
+  - { name: brew-php-switcher }
   - { name: ccze }
   - { name: chezmoi }
   - { name: coreutils }
@@ -31,6 +34,7 @@ homebrew_packages:
   - { name: go }
   - { name: golang-migrate }
   - { name: graphviz }
+  - { name: hashicorp/tap/terraform }
   - { name: htop-osx }
   - { name: httpd }
   - { name: httpie }
@@ -55,7 +59,8 @@ homebrew_packages:
   - { name: packer }
   - { name: pandoc }
   - { name: peco }
-  - { name: php }
+  - { name: php@8.0 }
+  - { name: php@7.4 }
   - { name: composer }
   - { name: pkg-config }
   - { name: python }
@@ -72,6 +77,7 @@ homebrew_packages:
   - { name: telnet }
   - { name: tig }
   - { name: tmux }
+  - { name: tmuxinator }
   - { name: tree }
   - {name: unison }
   - { name: wget }
@@ -99,6 +105,7 @@ homebrew_cask_packages:
   - 1password-cli
   - adoptopenjdk8 # for project(embulk depends java8)
   - alfred
+  - aws-vault
   - chef/chef/inspec
   - charles
   - coteditor
