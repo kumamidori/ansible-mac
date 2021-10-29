@@ -68,6 +68,7 @@ homebrew_packages:
   # using "brew edit unox"
   # modify depends_on "python@3" to depends_on "python@3.8" ↓
   - { name: eugenmayer/dockersync/unox }
+  - { name: rabbitmq }
   - { name: rsync }
   - { name: starship }
   - { name: sqlite }
