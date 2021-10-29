@@ -49,7 +49,9 @@ $ ansible-playbook localhost.yml -i hosts --skip-tags=brew,cask
 
 #### anyenv
 
-- anyenv(plugin: anyenv-update, anyenv-git), jenv, rbenv, nodenv, pyenv
+- anyenv（PHPビルドオプションを別リポジトリの別ブランチで管理しているので homebrew ではなく git で入れる）
+- anyenv plugin: anyenv-update, anyenv-git), phpenv, jenv, rbenv, nodenv, pyenv
+- If phpenv crashes again, I'll switch to phpbrew.
 
 #### jenv
 
@@ -73,7 +75,6 @@ $ /usr/libexec/java_home -V
 #### etc.
 
 - set iTerm2 automatically log
-- anyenv PHP は廃止した（原因不明だが動かないプロジェクトがあったため）
 - symfony CLI
 - Charles と Alfred は有償版ライセンス有り
 - Office （旧PCのライセンスを削除しておくこと）
