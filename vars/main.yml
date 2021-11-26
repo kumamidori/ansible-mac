@@ -51,7 +51,6 @@ homebrew_packages:
   - { name: memcached }
   - { name: mkcert }
   - { name: mysql@5.7 } # for project
-  - { name: mutagen-io/mutagen/mutagen-beta }
   - { name: nginx }
   - { name: postgresql }
   - { name: nkf }
@@ -112,6 +111,7 @@ homebrew_cask_packages:
   - charles
   - coteditor
   - dbngin
+  - db-browser-for-sqlite-nightly
   - deepl
   - discord
   - docker

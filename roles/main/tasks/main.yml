@@ -17,6 +17,7 @@
   with_items: "{{ homebrew_cask_packages }}"
   ignore_errors: true
   tags:
+    - brew
     - cask
 
 # brew install
