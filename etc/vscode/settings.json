@@ -1,0 +1,24 @@
+{
+    "workbench.colorTheme": "Default Light+",
+    "liveshare.allowInvites": "all",
+    "git.autorefresh": false,
+    "go.toolsManagement.autoUpdate": true,
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "redhat.telemetry.enabled": true,
+    "files.associations": {
+        "*.md": "markdown"
+    },
+    "security.workspace.trust.untrustedFiles": "open",
+    "workbench.editor.untitled.hint": "hidden",
+    "[php]": {
+        "editor.formatOnSave": true,
+        "editor.tabSize": 4,
+        "editor.defaultFormatter": "valeryanm.vscode-phpsab",
+    },
+    "editor.insertSpaces": true,
+    "phpsab.autoRulesetSearch": false,
+    "phpsab.snifferEnable": false,
+    "phpsab.fixerEnable": false,   
+    "html.format.endWithNewline": true
+}
