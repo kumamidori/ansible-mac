@@ -105,6 +105,9 @@
 - name: SSL
   shell: "mkcert -install"
 
+- name: cfn-linter for VSCode CloudFormation Linter
+  shell: "pip3 install cfn-lint"
+
 # ここから以下は anyenv 構築後に実行しなければならない
 # Embulk
 - name: install embulk plugins
