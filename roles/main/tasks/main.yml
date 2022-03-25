@@ -45,13 +45,6 @@
   tags:
     - mas
 
-# composer packages global install
-- name: install composer packages
-  composer: command=require global_command=yes arguments="{{ item.name }}"
-  with_items: "{{ composer_packages }}"
-  tags:
-    - composer
-
 # gem install bundler
 - name: install bundler
   gem: name="bundler" state="latest"

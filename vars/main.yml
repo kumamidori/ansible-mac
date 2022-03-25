@@ -61,7 +61,6 @@ homebrew_packages:
   - { name: peco }
   - { name: php@8.0 }
   - { name: php@7.4 }
-  - { name: composer }
   - { name: pkg-config }
   - { name: python }
   # using "brew edit unox"
@@ -81,7 +80,7 @@ homebrew_packages:
   - { name: tmux }
   - { name: tmuxinator }
   - { name: tree }
-  - {name: unison }
+  - { name: unison }
   - { name: wget }
   - { name: zsh }
   - { name: zsh-completions }
@@ -111,7 +110,6 @@ homebrew_cask_packages:
   - chef/chef/inspec
   - charles
   - coteditor
-  - dbngin
   - db-browser-for-sqlite-nightly
   - deepl
   - discord
@@ -119,40 +117,26 @@ homebrew_cask_packages:
   - dropbox
   - eclipse-java
   - firefox
-  - flash-player
   - google-chrome
   - google-japanese-ime
-  - grammarly
   - hex-fiend
-  - intellij-idea-ce
   - iterm2
   - karabiner-elements
   - kindle
   - phpstorm
-  - openoffice
   - slack
   - skitch
-  - skype
   # Unable to connect to simple MySQL docker container
   - tableplus
   - typora
-  - vagrant
-  - virtualbox
   - visual-studio-code
   - wireshark
   - zoomus
 
 mas_packages:
   - { name: Keynote, id: 409183694 }
-  - { name: "Be Focused - Focus Timer", id: 973134470 }
-  - { name: "microsoft-remote-desktop", id: 1295203466 }
   - { name: "The Unarchiver", id: 425424353 }
-  - { name: "Sequel Ace", id: 1518036000 }
   - { name: "ForkLift", id: 412448059}
-
-composer_packages:
-  - { name: "grasmash/xdebug-toggle" }
-  - { name: "pds/skeleton" }
 
 embulk_plugins:
   - embulk-input-s3
