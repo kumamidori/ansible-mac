@@ -21,6 +21,7 @@ homebrew_packages:
   - { name: colordiff }
   - { name: diff-so-fancy }
   - { name: deployer }
+  - { name: direnv }
   - { name: docker-clean }
   - { name: docker-machine }
   - { name: embulk }
