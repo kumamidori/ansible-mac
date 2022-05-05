@@ -110,3 +110,5 @@ defaults write com.apple.Safari InstallExtensionUpdatesAutomatically -bool true
 defaults write com.apple.terminal StringEncodings -array 4
 # ターミナル終了時のプロンプトを非表示にする
 defaults write com.googlecode.iterm2 PromptOnQuit -bool false
+# スクリーンショットの保存先をデスクトップにしない
+defaults write com.apple.screencapture location ~/Dowonloads
